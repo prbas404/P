@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLUS Micromercado - Pedidos en Línea</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="imagenes/icono.jpg">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="imagenes/perfil.png" alt="PLUS Logo" class="logo-img">
+                    <h1>PLUS Micromercado</h1>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#" class="nav-link active" onclick="showSection('productos')">Productos</a>
+                    <a href="#" class="nav-link" onclick="showSection('carrito')">Carrito (<span id="cart-count">0</span>)</a>
+                    <a href="#" class="nav-link" onclick="showSection('ordenes')">Mis Órdenes</a>
+                    <div class="user-menu">
+                        <span id="user-info"></span>
+                        <button id="login-btn" onclick="showSection('login')">Iniciar Sesión</button>
+                        <button id="register-btn" onclick="showSection('register')">Registrarse</button>
+                        <button id="logout-btn" onclick="logout()" style="display: none;">Cerrar Sesión</button>
+                        <button id="admin-btn" onclick="showSection('admin')" style="display: none;">Admin</button>
+                    </div>
+                </div>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección de Login -->
+        <section id="login-section" class="auth-section">
+            <div class="auth-container">
+                <h2>Iniciar Sesión</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email:</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Contraseña:</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                </form>
+                <p>¿No tienes cuenta? <a href="#" onclick="showSection('register')">Regístrate aquí</a></p>
+            </div>
+        </section>
+
+        <!-- Sección de Registro -->
+        <section id="register-section" class="auth-section" style="display: none;">
+            <div class="auth-container">
+                <h2>Registrarse</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">Nombre:</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email:</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Contraseña:</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Registrarse</button>
+                </form>
+                <p>¿Ya tienes cuenta? <a href="#" onclick="showSection('login')">Inicia sesión aquí</a></p>
+            </div>
+        </section>
+
+        <!-- Sección de Productos -->
+        <section id="productos-section" class="productos-section">
+            <div class="container">
+                <h2>Nuestros Productos</h2>
+                <div class="filtros">
+                    <select id="categoria-filter">
+                        <option value="">Todas las categorías</option>
+                    </select>
+                    <input type="text" id="search-input" placeholder="Buscar productos...">
+                </div>
+                <div id="productos-grid" class="productos-grid">
+                    <!-- Los productos se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección del Carrito -->
+        <section id="carrito-section" class="carrito-section" style="display: none;">
+            <div class="container">
+                <h2>Mi Carrito</h2>
+                <div id="carrito-items">
+                    <!-- Los items del carrito se cargarán aquí -->
+                </div>
+                <div id="carrito-total" class="carrito-total">
+                    <p>Total: Bs. <span id="total-amount">0.00</span></p>
+                    <button id="checkout-btn" class="btn-primary">Realizar Pedido</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Órdenes -->
+        <section id="ordenes-section" class="ordenes-section" style="display: none;">
+            <div class="container">
+                <h2>Mis Órdenes</h2>
+                <div id="ordenes-list">
+                    <!-- Las órdenes se cargarán aquí -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Admin -->
+        <section id="admin-section" class="admin-section" style="display: none;">
+            <div class="container">
+                <h2>Panel de Administración</h2>
+                <div class="admin-tabs">
+                    <button class="tab-btn active" onclick="showAdminTab('dashboard')">Dashboard</button>
+                    <button class="tab-btn" onclick="showAdminTab('productos')">Productos</button>
+                    <button class="tab-btn" onclick="showAdminTab('categorias')">Categorías</button>
+                    <button class="tab-btn" onclick="showAdminTab('ordenes')">Órdenes</button>
+                    <button class="tab-btn" onclick="showAdminTab('reportes')">Reportes</button>
+                </div>
+                <div id="admin-content">
+                    <!-- Contenido del admin se cargará aquí -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PLUS Micromercado - Cochabamba. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
